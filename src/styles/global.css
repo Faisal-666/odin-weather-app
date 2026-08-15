@@ -1,9 +1,24 @@
 :root {
-  --white: hsl(0, 0%, 100%);
-  --light-gray: hsl(0, 0%, 75%);
-  --gray: hsl(0, 0%, 50%);
-  --dark-gray: hsl(0, 0%, 25%);
-  --black: hsl(0, 0%, 0%);
+    /* shades */
+    --white: hsl(0, 0%, 100%);
+    --light-gray: hsl(0, 0%, 75%);
+    --gray: hsl(0, 0%, 50%);
+    --dark-gray: hsl(0, 0%, 25%);
+    --black: hsl(0, 0%, 0%);
+
+    --text-xs: 0.75rem;    /* 12px */
+    --text-sm: 0.875rem;   /* 14px */
+    --text-base: 1rem;     /* 16px */
+    --text-lg: 1.125rem;   /* 18px */
+    --text-xl: 1.25rem;    /* 20px */
+    --text-2xl: 1.5rem;    /* 24px */
+    --text-3xl: 2rem;      /* 32px */
+
+    --space-1: 0.25rem;   /* 4px */
+    --space-2: 0.5rem;    /* 8px */
+    --space-3: 0.75rem;   /* 12px */
+    --space-4: 1rem;      /* 16px */
+    --space-5: 1.5rem;    /* 24px */
 }
 @font-face {
     font-family: 'Geist_Pixel';
