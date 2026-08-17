@@ -1,11 +1,13 @@
 import './styles/global.css';
 import 'iconify-icon';
-import headerComponent from './components/header/header.js';
+
+import MainHandler from './handler.js';
 import getWeatherData from './services/weatherapi.services.js';
+import getDummy from '../dataDummy.js';
 
-document.querySelector('body').append(headerComponent({ onSearch: console.log }));
+const app = new MainHandler({
+    rootElement: document.querySelector('body'),
+    api: getDummy,
+});
 
-// (async () => {
-//     const data = await getWeatherData('Bandung');
-//     console.log(data);
-// })();
+app.init();

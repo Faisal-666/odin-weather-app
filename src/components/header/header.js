@@ -9,7 +9,7 @@ const headerComponent = ({ onSearch }) => {
         </div>
 
         <form class="search-container">
-            <input type="search" id="input-place" placeholder="Input some place...">
+            <input type="search" id="input-place" placeholder="Search a location..." minlength="2" maxlength="100" required>
             <button type="submit">
                 <iconify-icon icon="streamline-sharp:magnifying-glass"></iconify-icon>
             </button>

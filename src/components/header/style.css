@@ -1,6 +1,6 @@
-
 header {
-    background-color: var(--dark-gray);
+    background-color: hsla(0, 0%, 25%, .95  );
+    backdrop-filter: blur(3px);
     color: var(--white);
 
     padding: var(--space-5);
@@ -43,6 +43,12 @@ header .logo [icon] {
     font-size: var(--text-base);
     padding: var(--space-1);
     color: var(--white);
+}
+.search-container input::placeholder {
+    color: var(--light-gray);
+}
+.search-container input::-webkit-search-cancel-button {
+    appearance: none;
 }
 .search-container button {
     background-color: none;

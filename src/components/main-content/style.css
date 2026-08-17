@@ -1,0 +1,35 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-5);
+
+    color: var(--white);
+    background-color: hsla(0, 0%, 0%, .45);
+}
+main > div:first-child {
+    padding: var(--space-4) 0;
+    text-align: center;
+}
+main > div:last-child {
+    font-size: var(--text-2xl);
+    padding: var(--space-4) 0;
+    text-align: center;
+}
+main .location {
+    font-size: calc(1.5 * var(--text-3xl));
+}
+main .date {
+    font-size: var(--text-3xl);
+}
+main .temp-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: var(--space-1);
+}
+main .temp-wrapper [icon] {
+    font-size: calc(2 * var(--text-xl));
+}

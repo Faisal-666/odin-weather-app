@@ -5,8 +5,8 @@ const transformData = (data) => {
         address,
         timezone,
         tzoffset,
-        currentWeather: days.filter(obj => obj.source === 'comb')[0],
-        forcast: days.filter(obj => obj.source === 'fcst'),
+        currentWeather: days.find(obj => obj.source === 'comb'),
+        forecast: days.filter(obj => obj.source === 'fcst'),
     };
 
     return formatted;
