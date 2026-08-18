@@ -7,7 +7,14 @@ export default class MainHandler {
     constructor({ rootElement, api }) {
         this.rootElement = rootElement;
         this.getWeatherData = api;
-        this.state = {};
+        this.state = {
+            key: null,
+            unit: 'C',
+        };
+        this.mainDOM = null;
+        this.asideDOM = null;
+        this.loaded = false;
+        this.selectedForecast = null;
     }
 
     getData = async (name) => {
@@ -16,16 +23,81 @@ export default class MainHandler {
         this.state.currentData = transformedData;
     }
 
-    render = async () => {
-        this.rootElement.append(mainComponent(this.state.currentData.address, this.state.currentData.currentWeather));
-        this.rootElement.append(asideComponent(this.state.currentData.forecast, { onClick: (data) => console.log(data) }));
+    navigate = (state) => {
+        this.manageRender(this.state, state.datetime, () => {
+            this.mainDOM.updateState(state, this.state.unit);
+        });
+    }
+
+    manageRender = (state, key, callback) => {
+        if (state.key === key) return;
+        state.key = key;
+        callback();
+    }
+
+    updateRender = () => {
+        if (this.selectedForecast !== null) {
+            this.mainDOM.updateState(this.state.currentData.forecast[this.selectedForecast], this.state.unit);
+                this.asideDOM.updateState(
+                this.state.currentData.currentWeather, 
+                this.state.currentData.forecast,
+                this.state.unit,
+            );
+        } else {
+            this.mainDOM.updateState(this.state.currentData.currentWeather, this.state.unit);
+            this.asideDOM.updateState(
+                this.state.currentData.currentWeather, 
+                this.state.currentData.forecast,
+                this.state.unit,
+            );
+        }
     }
 
     init = () => {
-       this.rootElement.append(headerComponent({ onSearch: async (name) => {
-        await this.getData(name);
-        
-        this.render();
-       }}));
+       this.rootElement.append(
+        headerComponent({ 
+            onSearch: async (name) => {
+                await this.getData(name);
+
+                if (!this.loaded) {
+                    this.state.key = this.state.currentData.currentWeather.datetime;
+                    this.selectedForecast = null;
+
+                    this.mainDOM = mainComponent(
+                        this.state.unit,
+                        this.state.currentData.address, 
+                        this.state.currentData.currentWeather
+                    );
+                    this.asideDOM = asideComponent(
+                        this.state.unit,
+                        this.state.currentData.currentWeather,
+                        this.state.currentData.forecast,
+                        {
+                            onReset: () => {
+                                this.navigate(this.state.currentData.currentWeather);
+                                this.selectedForecast = null;
+                            },
+                            onToggle: (state) => {
+                                state !== true 
+                                    ? this.state.unit = 'C' 
+                                    : this.state.unit = 'F'
+                                ;
+                                
+                                this.updateRender();
+                            },
+                            onClick: (index) => {
+                                this.navigate(this.state.currentData.forecast[index]);
+                                this.selectedForecast = index;
+                            },
+                        },
+                    );
+
+                    this.rootElement.append(this.mainDOM.elementDOM, this.asideDOM.elementDOM);
+                    this.loaded = true;
+                }
+
+                this.updateRender();
+            }
+        }));
     }
 };

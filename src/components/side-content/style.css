@@ -30,6 +30,9 @@ aside .current {
     grid-column: 1 / span 2;
 
     position: relative;
+    
+    cursor: pointer;
+    transition: .3s ease;
 }
 .current span {
     position: absolute;
@@ -39,8 +42,11 @@ aside .current {
     font-size: var(--text-lg);
     color: var(--gray);
 }
+.current div {
+    font-size: var(--text-xl);
+}
 aside .toggle-container {
-    grid-column: 3 / span 2;
+    grid-column: 3 / span 2;    
 }
 aside #toggle-btn {
     display: flex;
@@ -72,7 +78,7 @@ aside #toggle-btn {
     left: 4px;
     bottom: 4px;
     
-    transition: .3s ease-in-out;
+    transition: left .3s ease-in-out;
 }
 #toggle-btn #check {
     opacity: 0;
@@ -83,17 +89,19 @@ aside #toggle-btn {
     background-color: hsla(174, 72%, 56%, .9);
 }
 #toggle-btn #check:checked + label::before {
-    transform: translateX(calc(4.5rem - 8px));
+    left: calc(100% - 1.5rem - 4px);
 }
 #toggle-btn .temp-left {
     position: absolute;
     left: -28px;
     font-size: var(--text-2xl);
+    cursor: default;
 }
 #toggle-btn .temp-right {
     position: absolute;
     right: -28px;
     font-size: var(--text-2xl);
+    cursor: default;
 }
 aside #forecast {
     grid-row: 2 / 3;
@@ -122,6 +130,13 @@ aside .forecast-item {
     align-items: center;
 
     font-size: var(--text-2xl);
+    cursor: pointer;
+
+    transition: .3s ease;
+}
+aside .forecast-item:hover,
+.current:hover {
+    transform: scale(1.03);
 }
 aside .forecast-item [icon] {
     font-size: calc(2 * var(--text-xl));
