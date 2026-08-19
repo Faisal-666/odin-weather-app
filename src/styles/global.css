@@ -50,7 +50,9 @@ body {
     grid-template-columns: 6.5fr 3.5fr;
     grid-template-rows: 100px 1fr;
 
-    background: url('../assets/images/Clear-night.jpeg') no-repeat center / cover;
+    background: url('../assets/images/default-bg.webp') no-repeat center / cover;
+
+    transition: background .3s ease-in-out;
 }
 header {
     grid-column: 1 / span 2;

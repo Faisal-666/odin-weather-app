@@ -24,6 +24,7 @@ const headerComponent = ({ onSearch }) => {
         if (!searchValue.trim().length) return;
 
         onSearch(searchValue);
+        searchForm.reset();
     }
     
     return header;

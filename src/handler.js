@@ -25,7 +25,11 @@ export default class MainHandler {
 
     navigate = (state) => {
         this.manageRender(this.state, state.datetime, () => {
-            this.mainDOM.updateState(state, this.state.unit);
+            this.mainDOM.updateState(
+                state,
+                this.state.unit,
+                this.state.currentData.timezone
+            );
         });
     }
 
@@ -37,16 +41,26 @@ export default class MainHandler {
 
     updateRender = () => {
         if (this.selectedForecast !== null) {
-            this.mainDOM.updateState(this.state.currentData.forecast[this.selectedForecast], this.state.unit);
-                this.asideDOM.updateState(
+            this.mainDOM.updateState(
+                this.state.currentData.forecast[this.selectedForecast], 
+                this.state.unit,
+                this.state.currentData.timezone,
+            );
+            this.asideDOM.updateState(
                 this.state.currentData.currentWeather, 
+                this.state.currentData.timezone,
                 this.state.currentData.forecast,
                 this.state.unit,
             );
         } else {
-            this.mainDOM.updateState(this.state.currentData.currentWeather, this.state.unit);
-            this.asideDOM.updateState(
+            this.mainDOM.updateState(
                 this.state.currentData.currentWeather, 
+                this.state.unit,
+                this.state.currentData.timezone,
+            );
+            this.asideDOM.updateState(
+                this.state.currentData.currentWeather,
+                this.state.currentData.timezone,
                 this.state.currentData.forecast,
                 this.state.unit,
             );
@@ -65,11 +79,13 @@ export default class MainHandler {
 
                     this.mainDOM = mainComponent(
                         this.state.unit,
+                        this.state.currentData.timezone,
                         this.state.currentData.address, 
                         this.state.currentData.currentWeather
                     );
                     this.asideDOM = asideComponent(
                         this.state.unit,
+                        this.state.currentData.timezone,
                         this.state.currentData.currentWeather,
                         this.state.currentData.forecast,
                         {
