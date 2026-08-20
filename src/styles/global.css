@@ -6,6 +6,21 @@
     --dark-gray: hsl(0, 0%, 25%);
     --black: hsl(0, 0%, 0%);
 
+    --red: hsla(0, 100%, 50%, .7);
+
+    /* Bg */
+    --header-bg: hsla(0, 0%, 25%, .90);
+    --empty-state-bg: hsla(0, 0%, 5%, .65);
+    --loader-bg: hsla(0, 0%, 5%, .95);
+    --main-bg: hsla(0, 0%, 0%, .45);
+    
+    /* border */
+    --border-item: hsla(0, 0%, 95%, .2);
+
+    /* Toggle btn */
+    --toggle-bg-off: hsla(0, 0%, 30%, .9);
+    --toggle-bg-on: hsla(174, 72%, 56%, .9);
+
     --text-xs: 0.75rem;    /* 12px */
     --text-sm: 0.875rem;   /* 14px */
     --text-base: 1rem;     /* 16px */

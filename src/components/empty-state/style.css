@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: center;
 
-    background-color: hsla(0, 0%, 5%, .65);
+    background-color: var(--empty-state-bg);
     backdrop-filter: var(--blur);
 
     position: absolute;
@@ -20,5 +20,5 @@
 }
 .empty-state [icon] {
     font-size: var(--text-2xl);
-    color: hsla(0, 100%, 50%, .7);
+    color: var(--red);
 }

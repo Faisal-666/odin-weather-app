@@ -3,7 +3,7 @@ aside {
     padding: var(--space-2) var(--space-2) var(--space-2) 0;
 
     color: var(--white);
-    background-color: hsla(0, 0%, 0%, .45);
+    background-color: var(--main-bg);
     
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -11,7 +11,7 @@ aside {
     gap: var(--space-2);
 }
 aside > div {
-    border: 1px solid hsla(0, 0%, 95%, .2);
+    border: 1px solid var(--border-item);
     border-radius: .3em;
 
     display: grid;
@@ -19,7 +19,7 @@ aside > div {
 
     font-size: var(--text-xl);
 
-    background-color: hsla(0, 0%, 0%, .45);
+    background-color: var(--main-bg);
     backdrop-filter: var(--blur);
 }
 aside .current,
@@ -55,7 +55,7 @@ aside #toggle-btn {
     position: relative;
 }
 #toggle-btn label {
-    background-color: hsla(0, 0%, 30%, .9);
+    background-color: var(--toggle-bg-off);
     
     width: 6rem;
     height: 2rem;
@@ -85,7 +85,7 @@ aside #toggle-btn {
     display: none;
 }
 #toggle-btn #check:checked + label {
-    background-color: hsla(174, 72%, 56%, .9);
+    background-color: var(--toggle-bg-on);
 }
 #toggle-btn #check:checked + label::before {
     left: calc(100% - 1.5rem - 4px);
