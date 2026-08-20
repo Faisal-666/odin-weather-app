@@ -43,6 +43,7 @@ h3 {
     font-family: 'Geist_Pixel';
 }
 body {
+    position: relative;
     font-family: 'Pixelify_Sans';
 
     height: 100vh;

@@ -9,7 +9,7 @@ const getWeatherData = async (name) => {
         
         return weatherData;
     } catch (err) {
-        console.log(err);
+        throw new Error(err);
     }
 };
 

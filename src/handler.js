@@ -2,6 +2,7 @@ import transformData from './utils/rawDataTransformer.js';
 import headerComponent from './components/header/header.js';
 import mainComponent from './components/main-content/mainContent.js';
 import asideComponent from './components/side-content/aside.js';
+import loaderComponent from './components/loader/loaderComponent.js';
 
 export default class MainHandler {
     constructor({ rootElement, api }) {
@@ -13,14 +14,23 @@ export default class MainHandler {
         };
         this.mainDOM = null;
         this.asideDOM = null;
+        this.loaderDOM = loaderComponent();
         this.loaded = false;
         this.selectedForecast = null;
     }
 
     getData = async (name) => {
-        const weatherData = await this.getWeatherData(name);
-        const transformedData = transformData(weatherData);
-        this.state.currentData = transformedData;
+        this.rootElement.append(this.loaderDOM);
+
+        try {
+            const weatherData = await this.getWeatherData(name);
+            const transformedData = transformData(weatherData);
+            this.state.currentData = transformedData;
+        } catch (err) {
+            console.log(err.message);
+        } finally {
+            this.loaderDOM.remove();
+        }
     }
 
     navigate = (state) => {
@@ -71,7 +81,7 @@ export default class MainHandler {
     }
 
     init = () => {
-       this.rootElement.append(
+        this.rootElement.append(
         headerComponent({ 
             onSearch: async (name) => {
                 await this.getData(name);

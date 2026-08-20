@@ -1,0 +1,25 @@
+.loader-container {
+    height: calc(100% - 100px);
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: hsla(0, 0%, 5%, .95);
+
+    position: absolute;
+    bottom: 0;
+}
+.loader-container [icon] {
+    font-size: calc(var(--text-3xl) * 2);
+    color: var(--white);
+
+    animation: rotate 1s infinite;
+}
+
+@keyframes rotate {
+    100% {
+        rotate: 360deg;
+    }
+}
