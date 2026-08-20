@@ -90,7 +90,7 @@ export default class MainHandler {
     }
 
     init = () => {
-        this.rootElement.append(this.emptyState);
+        this.rootElement.append(this.emptyState.element);
 
         this.rootElement.append(
         headerComponent({ 
@@ -98,7 +98,7 @@ export default class MainHandler {
                 const result = await this.getData(name);
 
                 if (!result.status) {
-                    console.log(result.error);
+                    this.emptyState.changeMsg(result.error);
                     return;
                 };
 
@@ -139,12 +139,12 @@ export default class MainHandler {
 
                     this.rootElement.append(this.mainDOM.elementDOM, this.asideDOM.elementDOM);
                     this.loaded = true;
-                    this.emptyState.remove();
+                    this.emptyState.element.remove();
                 }
 
                 this.selectedForecast = null;
                 this.updateRender();
-                this.emptyState.remove();
+                this.emptyState.element.remove();
             }
         }));
     }
