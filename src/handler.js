@@ -3,6 +3,7 @@ import headerComponent from './components/header/header.js';
 import mainComponent from './components/main-content/mainContent.js';
 import asideComponent from './components/side-content/aside.js';
 import loaderComponent from './components/loader/loaderComponent.js';
+import emptyState from './components/empty-state/emptyState.js';
 
 export default class MainHandler {
     constructor({ rootElement, api }) {
@@ -15,6 +16,7 @@ export default class MainHandler {
         this.mainDOM = null;
         this.asideDOM = null;
         this.loaderDOM = loaderComponent();
+        this.emptyState = emptyState();
         this.loaded = false;
         this.selectedForecast = null;
     }
@@ -26,8 +28,15 @@ export default class MainHandler {
             const weatherData = await this.getWeatherData(name);
             const transformedData = transformData(weatherData);
             this.state.currentData = transformedData;
-        } catch (err) {
-            console.log(err.message);
+            
+            return {
+                status: true
+            }
+        } catch(err) {
+            return {
+                status: false,
+                error: err.message
+            }
         } finally {
             this.loaderDOM.remove();
         }
@@ -81,10 +90,17 @@ export default class MainHandler {
     }
 
     init = () => {
+        this.rootElement.append(this.emptyState);
+
         this.rootElement.append(
         headerComponent({ 
             onSearch: async (name) => {
-                await this.getData(name);
+                const result = await this.getData(name);
+
+                if (!result.status) {
+                    console.log(result.error);
+                    return;
+                };
 
                 if (!this.loaded) {
                     this.state.key = this.state.currentData.currentWeather.datetime;
@@ -123,10 +139,12 @@ export default class MainHandler {
 
                     this.rootElement.append(this.mainDOM.elementDOM, this.asideDOM.elementDOM);
                     this.loaded = true;
+                    this.emptyState.remove();
                 }
 
                 this.selectedForecast = null;
                 this.updateRender();
+                this.emptyState.remove();
             }
         }));
     }

@@ -1,0 +1,19 @@
+.empty-state {
+    color: var(--white);
+
+    height: calc(100% - 100px);
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: hsla(0, 0%, 5%, .65);
+    backdrop-filter: var(--blur);
+
+    position: absolute;
+    bottom: 0;
+}
+.empty-state h2 {
+    font-size: var(--text-3xl);
+}
