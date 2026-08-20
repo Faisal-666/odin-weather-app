@@ -3,40 +3,40 @@ import { formatInTimeZone } from 'date-fns-tz';
 
 import defaultBg from '../assets/images/default-bg.webp';
 
-import clearAfternoon from '../assets/images/Clear-afternoon.jpeg'; 
-import clearEvening from '../assets/images/Clear-evening.jpeg';
-import clearMorning from '../assets/images/Clear-morning.jpeg';
-import clearNight from '../assets/images/Clear-night.jpeg';
+import clearAfternoon from '../assets/images/Clear-afternoon.webp'; 
+import clearEvening from '../assets/images/Clear-evening.webp';
+import clearMorning from '../assets/images/Clear-morning.webp';
+import clearNight from '../assets/images/Clear-night.webp';
 
-import cloudyOvercastAfternoon from '../assets/images/Cloudy-Overcast-afternoon.jpeg';
-import cloudyOvercastEvening from '../assets/images/Cloudy-Overcast-evening.jpeg';
-import cloudyOvercastMorning from '../assets/images/Cloudy-Overcast-morning.jpeg';
-import cloudyOvercastNight from '../assets/images/Cloudy-Overcast-night.jpeg';
+import cloudyOvercastAfternoon from '../assets/images/Cloudy-Overcast-afternoon.webp';
+import cloudyOvercastEvening from '../assets/images/Cloudy-Overcast-evening.webp';
+import cloudyOvercastMorning from '../assets/images/Cloudy-Overcast-morning.webp';
+import cloudyOvercastNight from '../assets/images/Cloudy-Overcast-night.webp';
 
-import fogAfternoon from '../assets/images/Fog-afternoon.jpeg';
-import fogEvening from '../assets/images/Fog-evening.jpeg';
-import fogMorning from '../assets/images/Fog-morning.jpeg';
-import fogNight from '../assets/images/Fog-night.jpeg';
+import fogAfternoon from '../assets/images/Fog-afternoon.webp';
+import fogEvening from '../assets/images/Fog-evening.webp';
+import fogMorning from '../assets/images/Fog-morning.webp';
+import fogNight from '../assets/images/Fog-night.webp';
 
-import freezingSleetAfternoon from '../assets/images/Freezing-Sleet-afternoon.jpeg';
-import freezingSleetEvening from '../assets/images/Freezing-Sleet-evening.jpeg';
-import freezingSleetMorning from '../assets/images/Freezing-Sleet-morning.jpeg';
-import freezingSleetNight from '../assets/images/Freezing-Sleet-night.jpeg';
+import freezingSleetAfternoon from '../assets/images/Freezing-Sleet-afternoon.webp';
+import freezingSleetEvening from '../assets/images/Freezing-Sleet-evening.webp';
+import freezingSleetMorning from '../assets/images/Freezing-Sleet-morning.webp';
+import freezingSleetNight from '../assets/images/Freezing-Sleet-night.webp';
 
-import rainAfternoon from '../assets/images/Rain-afternoon.jpeg';
-import rainEvening from '../assets/images/Rain-evening.jpeg';
-import rainMorning from '../assets/images/Rain-morning.jpeg';
-import rainNight from '../assets/images/Rain-night.jpeg';
+import rainAfternoon from '../assets/images/Rain-afternoon.webp';
+import rainEvening from '../assets/images/Rain-evening.webp';
+import rainMorning from '../assets/images/Rain-morning.webp';
+import rainNight from '../assets/images/Rain-night.webp';
 
-import snowAfternoon from '../assets/images/Snow-afternoon.jpeg';
-import snowEvening from '../assets/images/Snow-evening.jpeg';
-import snowMorning from '../assets/images/Snow-morning.jpeg';
-import snowNight from '../assets/images/Snow-night.jpeg';
+import snowAfternoon from '../assets/images/Snow-afternoon.webp';
+import snowEvening from '../assets/images/Snow-evening.webp';
+import snowMorning from '../assets/images/Snow-morning.webp';
+import snowNight from '../assets/images/Snow-night.webp';
 
-import thunderstormAfternoon from '../assets/images/Thunderstorm-afternoon.jpeg';
-import thunderstormEvening from '../assets/images/Thunderstorm-evening.jpeg';
-import thunderstormMorning from '../assets/images/Thunderstorm-morning.jpeg';
-import thunderstormNight from '../assets/images/Thunderstorm-night.jpeg';
+import thunderstormAfternoon from '../assets/images/Thunderstorm-afternoon.webp';
+import thunderstormEvening from '../assets/images/Thunderstorm-evening.webp';
+import thunderstormMorning from '../assets/images/Thunderstorm-morning.webp';
+import thunderstormNight from '../assets/images/Thunderstorm-night.webp';
 
 const conditionBg = {
     clear: {

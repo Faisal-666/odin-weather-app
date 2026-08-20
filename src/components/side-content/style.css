@@ -20,7 +20,7 @@ aside > div {
     font-size: var(--text-xl);
 
     background-color: hsla(0, 0%, 0%, .45);
-    backdrop-filter: blur(6px);
+    backdrop-filter: var(--blur);
 }
 aside .current,
 aside .toggle-container {
@@ -34,16 +34,15 @@ aside .current {
     cursor: pointer;
     transition: .3s ease;
 }
-.current span {
+.current small {
     position: absolute;
     top: var(--space-2);
     left: var(--space-2);
 
-    font-size: var(--text-lg);
     color: var(--gray);
 }
 .current div {
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
 }
 aside .toggle-container {
     grid-column: 3 / span 2;    

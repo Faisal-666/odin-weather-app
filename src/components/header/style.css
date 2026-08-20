@@ -1,6 +1,6 @@
 header {
     background-color: hsla(0, 0%, 25%, .90);
-    backdrop-filter: blur(3px);
+    backdrop-filter: var(--blur);
     color: var(--white);
 
     padding: var(--space-5);

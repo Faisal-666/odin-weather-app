@@ -19,6 +19,8 @@
     --space-3: 0.75rem;   /* 12px */
     --space-4: 1rem;      /* 16px */
     --space-5: 1.5rem;    /* 24px */
+
+    --blur: blur(6px);
 }
 @font-face {
     font-family: 'Geist_Pixel';

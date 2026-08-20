@@ -2,12 +2,13 @@ import './style.css';
 import getDay from '../../utils/getDayFromDate.js';
 import formatDatetimeEpoch from '../../utils/formatTimeEpoch.js';
 import { parseISO, format } from 'date-fns';
+import displayTemp from '../../utils/displayTemp.js';
 
 const asideComponent = (unit, timezone, current, forecast, { onReset, onClick, onToggle }) => {
     const aside = document.createElement('aside');
     aside.innerHTML = `
         <div class="current">
-            <span>Current</span>
+            <small>Current</small>
             <div>${format(parseISO(formatDatetimeEpoch(current.datetimeEpoch, timezone)), 'EEEE, dd MMMM')}</div>
         </div>
         <div class="toggle-container">
@@ -29,7 +30,7 @@ const asideComponent = (unit, timezone, current, forecast, { onReset, onClick, o
             <div class="forecast-item next-${index + 1}" data-index="${index}">
                 <div class="day">${getDay(formatDatetimeEpoch(obj.datetimeEpoch, timezone))}</div>
                 <iconify-icon icon="meteocons:${obj.icon}"></iconify-icon>
-                <span class="temp">${obj.temp}° ${unit}</span>
+                <span class="temp">${displayTemp(obj.temp, unit)}</span>
             </div>
         `;
     });
@@ -49,7 +50,7 @@ const asideComponent = (unit, timezone, current, forecast, { onReset, onClick, o
         aside.querySelectorAll('.forecast-item').forEach((element, index) => {
             element.querySelector('.day').textContent = getDay(formatDatetimeEpoch(forecastCurrent[index].datetimeEpoch, currentTZ));
             element.querySelector('[icon]').setAttribute('icon', `meteocons:${forecastCurrent[index].icon}`);
-            element.querySelector('.temp').textContent = `${forecastCurrent[index].temp}° ${currentUnit}`;
+            element.querySelector('.temp').textContent = displayTemp(forecastCurrent[index].temp, currentUnit);
         });
     };
 

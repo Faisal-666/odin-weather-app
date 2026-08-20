@@ -18,7 +18,7 @@ export default class MainHandler {
     }
 
     getData = async (name) => {
-        const weatherData = await this.getWeatherData();
+        const weatherData = await this.getWeatherData(name);
         const transformedData = transformData(weatherData);
         this.state.currentData = transformedData;
     }
@@ -26,6 +26,7 @@ export default class MainHandler {
     navigate = (state) => {
         this.manageRender(this.state, state.datetime, () => {
             this.mainDOM.updateState(
+                this.state.currentData.address,
                 state,
                 this.state.unit,
                 this.state.currentData.timezone
@@ -42,7 +43,8 @@ export default class MainHandler {
     updateRender = () => {
         if (this.selectedForecast !== null) {
             this.mainDOM.updateState(
-                this.state.currentData.forecast[this.selectedForecast], 
+                this.state.currentData.address,
+                this.state.currentData.forecast[this.selectedForecast],
                 this.state.unit,
                 this.state.currentData.timezone,
             );
@@ -54,7 +56,8 @@ export default class MainHandler {
             );
         } else {
             this.mainDOM.updateState(
-                this.state.currentData.currentWeather, 
+                this.state.currentData.address,
+                this.state.currentData.currentWeather,
                 this.state.unit,
                 this.state.currentData.timezone,
             );
@@ -112,6 +115,7 @@ export default class MainHandler {
                     this.loaded = true;
                 }
 
+                this.selectedForecast = null;
                 this.updateRender();
             }
         }));
