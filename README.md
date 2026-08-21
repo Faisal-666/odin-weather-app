@@ -20,6 +20,10 @@ The application separates API communication, data transformation, application lo
 
 ```text
 src/
+├── assets/
+│   ├── fonts/                      # Fonts
+│   └── images/                     # Images for bg     
+│
 ├── components/                     # Containing component, along with its DOM, update DOM method & style
 │   ├── empty-state/
 │   ├── header/                     
@@ -48,29 +52,35 @@ src/
 
 ## Data Flow
 ```text
-Visual Crossing API
-        │
-        ▼
-  Weather Service
-        │
-        ▼
-Raw Data Transformer
-        │
-        ▼
-    MainHandler
-        │
-        ▼
-      State
-        │
-        ▼     
-    Component
+     MainHandler.init()
+            │
+            ▼
+    onSearch callback()
+            │
+            ▼
+   MainHandler.getData()
+            │
+            ▼
+     Weather Services
+            │
+            ▼
+    Visual Crossing API
+            │
+            ▼
+   Raw Data Transformer
+            │
+            ▼
+          State
+            │
+            ▼     
+  Render/update Component
 ```
 
 ## Design Decision
 - Raw API responses are transformed before being used by the application, so the rest of the code does not need to depend directly on the API response structure.
 - `MainHandler` acts as the application orchestrator and manages state, rendering, navigation, and communication between components.
-- UI components are responsible for their own DOM creation and updates, while application logic is handled outside the components.
-- `index.js` is only responsible for injecting dependecys for `mainHandler`.
+- UI components are responsible for their own DOM creation, updates, & callback for behavior while application logic is handled outside the components.
+- `index.js` is only responsible for injecting dependencys for `mainHandler`.
 
 ## Technologies
 - JavaScript (ES6+)
@@ -83,7 +93,6 @@ Raw Data Transformer
 This project was built to practice:
 - Asynchronous JavaScript
 - API consumption
-- Data transformation
 - ES Modules
 - DOM manipulation
 - Event handling
