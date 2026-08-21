@@ -38,7 +38,6 @@ const asideComponent = (unit, timezone, current, forecast, { onReset, onClick, o
     const currentWeather = aside.querySelector('div.current');
     currentWeather.onclick = () => onReset();
 
-    const toggleBtn = aside.querySelector('label[for="check"]');
     const unitValue = aside.querySelector('#check');
     unitValue.onclick = () => onToggle(unitValue.checked);
 

@@ -30,17 +30,17 @@ export default class MainHandler {
             this.state.currentData = transformedData;
             
             return {
-                status: true
-            }
+                status: true,
+            };
         } catch(err) {
             return {
                 status: false,
-                error: err.message
-            }
+                error: err.message,
+            };
         } finally {
             this.loaderDOM.remove();
         }
-    }
+    };
 
     navigate = (state) => {
         this.manageRender(this.state, state.datetime, () => {
@@ -48,16 +48,16 @@ export default class MainHandler {
                 this.state.currentData.address,
                 state,
                 this.state.unit,
-                this.state.currentData.timezone
+                this.state.currentData.timezone,
             );
         });
-    }
+    };
 
     manageRender = (state, key, callback) => {
         if (state.key === key) return;
         state.key = key;
         callback();
-    }
+    };
 
     updateRender = () => {
         if (this.selectedForecast !== null) {
@@ -87,65 +87,65 @@ export default class MainHandler {
                 this.state.unit,
             );
         }
-    }
+    };
 
     init = () => {
         this.rootElement.append(this.emptyState.element);
 
         this.rootElement.append(
-        headerComponent({ 
-            onSearch: async (name) => {
-                const result = await this.getData(name);
+            headerComponent({ 
+                onSearch: async (name) => {
+                    const result = await this.getData(name);
 
-                if (!result.status) {
-                    this.emptyState.changeMsg(result.error);
-                    return;
-                };
+                    if (!result.status) {
+                        this.emptyState.changeMsg(result.error);
+                        return;
+                    };
 
-                if (!this.loaded) {
-                    this.state.key = this.state.currentData.currentWeather.datetime;
-                    this.selectedForecast = null;
+                    if (!this.loaded) {
+                        this.state.key = this.state.currentData.currentWeather.datetime;
+                        this.selectedForecast = null;
 
-                    this.mainDOM = mainComponent(
-                        this.state.unit,
-                        this.state.currentData.timezone,
-                        this.state.currentData.address, 
-                        this.state.currentData.currentWeather
-                    );
-                    this.asideDOM = asideComponent(
-                        this.state.unit,
-                        this.state.currentData.timezone,
-                        this.state.currentData.currentWeather,
-                        this.state.currentData.forecast,
-                        {
-                            onReset: () => {
-                                this.navigate(this.state.currentData.currentWeather);
-                                this.selectedForecast = null;
-                            },
-                            onToggle: (state) => {
-                                state !== true 
-                                    ? this.state.unit = 'C' 
-                                    : this.state.unit = 'F'
-                                ;
+                        this.mainDOM = mainComponent(
+                            this.state.unit,
+                            this.state.currentData.timezone,
+                            this.state.currentData.address, 
+                            this.state.currentData.currentWeather,
+                        );
+                        this.asideDOM = asideComponent(
+                            this.state.unit,
+                            this.state.currentData.timezone,
+                            this.state.currentData.currentWeather,
+                            this.state.currentData.forecast,
+                            {
+                                onReset: () => {
+                                    this.navigate(this.state.currentData.currentWeather);
+                                    this.selectedForecast = null;
+                                },
+                                onToggle: (state) => {
+                                    state !== true 
+                                        ? this.state.unit = 'C' 
+                                        : this.state.unit = 'F'
+                                    ;
                                 
-                                this.updateRender();
+                                    this.updateRender();
+                                },
+                                onClick: (index) => {
+                                    this.navigate(this.state.currentData.forecast[index]);
+                                    this.selectedForecast = index;
+                                },
                             },
-                            onClick: (index) => {
-                                this.navigate(this.state.currentData.forecast[index]);
-                                this.selectedForecast = index;
-                            },
-                        },
-                    );
+                        );
 
-                    this.rootElement.append(this.mainDOM.elementDOM, this.asideDOM.elementDOM);
-                    this.loaded = true;
+                        this.rootElement.append(this.mainDOM.elementDOM, this.asideDOM.elementDOM);
+                        this.loaded = true;
+                        this.emptyState.element.remove();
+                    }
+
+                    this.selectedForecast = null;
+                    this.updateRender();
                     this.emptyState.element.remove();
-                }
-
-                this.selectedForecast = null;
-                this.updateRender();
-                this.emptyState.element.remove();
-            }
-        }));
-    }
+                },
+            }));
+    };
 };

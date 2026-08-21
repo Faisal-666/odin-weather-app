@@ -25,7 +25,7 @@ const headerComponent = ({ onSearch }) => {
 
         onSearch(searchValue);
         searchForm.reset();
-    }
+    };
     
     return header;
 };

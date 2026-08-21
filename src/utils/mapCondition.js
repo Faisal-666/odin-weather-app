@@ -81,7 +81,7 @@ const conditionBg = {
         morning: thunderstormMorning,
         night: thunderstormNight,
     },
-    defaultBg
+    defaultBg,
 };
 
 const conditionKey = {
@@ -97,7 +97,7 @@ const conditionKey = {
     fog: 'fog',
     thunderstorm: 'thunderstorm',
     hail: 'snow',
-}
+};
  
 const mapCondition = (condition) => {
     const splitted = condition.includes(',') 

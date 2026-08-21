@@ -4,7 +4,7 @@ const transformData = (data) => {
         timezone, 
         tzoffset, 
         currentConditions,
-        days 
+        days, 
     } = data;
 
     const formatted = {

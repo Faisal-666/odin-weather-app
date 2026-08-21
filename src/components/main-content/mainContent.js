@@ -50,7 +50,7 @@ const mainComponent = (unit, timezone, address, weather) => {
     
     return {
         elementDOM: main,
-        updateState
+        updateState,
     };
 };
 

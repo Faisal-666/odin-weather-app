@@ -4,7 +4,7 @@ const emptyState = () => {
     const div = document.createElement('div');
     div.classList.add('empty-state');
     
-    div.innerHTML = `<h2>Search to display some information</h2>`;
+    div.innerHTML = '<h2>Search to display some information</h2>';
 
     const changeMsg = (msg) => {
         div.innerHTML = `
@@ -12,11 +12,11 @@ const emptyState = () => {
             <span>${msg}</span>
             <h2>Search to display some information</h2>
         `;
-    }
+    };
 
     return {
         element: div,
-        changeMsg
+        changeMsg,
     };
 };
 
